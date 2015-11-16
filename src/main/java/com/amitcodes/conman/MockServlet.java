@@ -39,7 +39,7 @@ public class MockServlet extends HttpServlet
 
     private void loadMappingFile() throws IOException
     {
-        String mockMappingFileLocation = System.getProperty("echo.mock.mapping.file");
+        String mockMappingFileLocation = getServletContext().getInitParameter("mapping-file-location");
         if(mockMappingFileLocation == null) {
             throw new IllegalStateException("Mapping file must be provided");
         }
