@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+    <servlet>
+        <servlet-name>EchoServlet</servlet-name>
+        <servlet-class>com.amitcodes.conman.EchoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HungServlet</servlet-name>
+        <servlet-class>com.amitcodes.conman.HungServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MockServlet</servlet-name>
+        <servlet-class>com.amitcodes.conman.MockServlet</servlet-class>
+    </servlet>
+
+    <filter>
+        <filter-name>cross-origin</filter-name>
+        <filter-class>org.eclipse.jetty.servlets.CrossOriginFilter</filter-class>
+        <init-param>
+            <param-name>allowCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedHeaders</param-name>
+            <param-value>x-requested-with,content-type,accept,origin,authorization,uid</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedMethods</param-name>
+            <param-value>HEAD,GET,POST,OPTIONS,PUT,DELETE,PATCH</param-value>
+        </init-param>
+        <init-param>
+            <param-name>exposedHeaders</param-name>
+            <param-value>link,date,Location,Content-Disposition</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedOrigins</param-name>
+            <param-value>*</param-value>
+        </init-param>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>cross-origin</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EchoServlet</servlet-name>
+        <url-pattern>/echo/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HungServlet</servlet-name>
+        <url-pattern>/hang/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MockServlet</servlet-name>
+        <url-pattern>/mock/*</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,21 @@
+----- Direct Hit --------
+
+curl -iX GET   -H'name: amit' -H'name: sharma' 'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+curl -iX POST  -H'name: amit' -H'name: sharma' -d'id=100&key=godrej&value=locker' 'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+curl -iX POST -H'name: amit' -H'name: sharma' -H'Content-Type: application/json' -d'{"key": "value"}' 'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+curl -iX PUT   -H'name: amit' -H'name: sharma' 'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+curl -iX PATCH -H'name: amit' -H'name: sharma'  'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+curl -iX DELETE -H'name: amit' -H'name: sharma' 'http://shiv.amitcodes.com:8888/echo?age=233&sex=male&sex=female'
+
+
+curl -iX GET 'http://shiv.amitcodes.com:8888/hang'
+
+
+
+
+
