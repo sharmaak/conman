@@ -1,7 +1,7 @@
 package com.amitcodes.conman.servlets;
 
 
-import com.amitcodes.conman.EchoLauncher;
+import com.amitcodes.conman.Launcher;
 import com.amitcodes.conman.pojos.Response;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 
 public class EchoServlet extends HttpServlet
 {
-    private static final Logger logger = LoggerFactory.getLogger(EchoLauncher.class);
+    private static final Logger logger = LoggerFactory.getLogger(Launcher.class);
     private ObjectMapper jsonMapper;
     
     @Override
