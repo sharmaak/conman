@@ -4,7 +4,7 @@
     <groupId>conman</groupId>
     <artifactId>conman</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>ConMan</name>
 
     <properties>
