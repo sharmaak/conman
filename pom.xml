@@ -9,30 +9,28 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jettyVersion>9.2.3.v20140905</jettyVersion>
-        <junit.version>4.10</junit.version>
+        <org.eclipse.jetty.version>9.3.6.v20151106</org.eclipse.jetty.version>
         <org.slf4j.version>1.7.6</org.slf4j.version>
-        <javax.servlet.servlet-api.version>2.4</javax.servlet.servlet-api.version>
-        <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
-        <jackson.dataformat.yaml.version>2.4.0</jackson.dataformat.yaml.version>
+        <com.fasterxml.jackson.version>2.6.3</com.fasterxml.jackson.version>
+        <junit.version>4.10</junit.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>${jackson.dataformat.yaml.version}</version>
+            <version>${com.fasterxml.jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson.version}</version>
         </dependency>
 
 
@@ -52,54 +50,33 @@
             <artifactId>logback-core</artifactId>
             <version>1.1.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.7</version>
-        </dependency>
         <!-- END: slf4j dependencies -->
 
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>${jettyVersion}</version>
+            <version>${org.eclipse.jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-            <version>${jettyVersion}</version>
+            <version>${org.eclipse.jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>${jettyVersion}</version>
+            <version>${org.eclipse.jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlets</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${javax.servlet.servlet-api.version}</version>
-            <scope>provided</scope>
+            <version>${org.eclipse.jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.8.5</version>
         </dependency>
     </dependencies>
 
