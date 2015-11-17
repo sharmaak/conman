@@ -3,8 +3,8 @@ package com.amitcodes.conman.servlets;
 
 import com.amitcodes.conman.Launcher;
 import com.amitcodes.conman.pojos.Response;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +25,8 @@ public class EchoServlet extends HttpServlet
     {
         super.init();
         jsonMapper = new ObjectMapper();
-        jsonMapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
-        jsonMapper.configure(SerializationConfig.Feature.SORT_PROPERTIES_ALPHABETICALLY, true);
+        jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        jsonMapper.enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
     }
 
     @Override
