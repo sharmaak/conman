@@ -1,0 +1,53 @@
+
+# Port on which server will run
+port: 8081
+
+# URL mappings for the servlets
+mockServletUriMappings: 
+  - /tests/*
+  - /foo/*
+echoServletUriMappings: 
+  - /echo/*
+hungServletUriMappings: 
+  - /hung/*
+
+# Data for mocking endpoints
+mockMappings: 
+    - uri : /tests/100
+      httpMethod : GET
+      body : hello world
+      contentType : application/json
+      statusCode : 200
+
+    - uri : /tests/200
+      httpMethod : POST
+      body : | 
+        {
+            "hello": "world",
+            "my": "loving dududes"
+        }
+      contentType : application/json
+      statusCode : 200
+
+    - uri : /tests/300
+      httpMethod : POST
+      body : | 
+        <xml>
+            <mappings>
+                <mapping>
+                    <uri>/documents/100</uri>
+                    <httpMethod>GET</httpMethod>
+                    <contentType>application/json</contentType>
+                    <statusCode>200</statusCode>
+                </mapping>
+            </mappings>
+        </xml>
+      contentType : application/json
+      statusCode : 200
+
+    - uri: /tests/image
+      httpMethod: GET
+      body: |
+        STREAM_FILE:conf/ConManBody.jpg
+      contentType : image/jpg
+      statusCode : 201
