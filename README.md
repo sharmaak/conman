@@ -44,3 +44,8 @@ Server: Jetty(9.3.z-SNAPSHOT)
 That's all, you have mocked your RESTful endpoints!
 
 For detailed configuration refer to the [configuration page](https://github.com/sharmaak/conman/wiki/Configuration) in this wiki. 
+
+### License
+Copyright (c) 2015 Amit Kumar Sharma
+
+Apache License 2.0 (Apache-2.0) licensing, for details see file LICENSE.
