@@ -1,4 +1,4 @@
-package com.amitcodes.conman;
+package com.amitcodes.conman.pojos;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;

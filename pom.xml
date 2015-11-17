@@ -15,9 +15,17 @@
         <javax.servlet.servlet-api.version>2.4</javax.servlet.servlet-api.version>
         <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
         <com.beust.jcommander.version>1.48</com.beust.jcommander.version>
+        <org.yaml.snakeyaml.version>1.16</org.yaml.snakeyaml.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${org.yaml.snakeyaml.version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
@@ -90,6 +98,7 @@
             <version>1.8.5</version>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>conman</finalName>
         <plugins>

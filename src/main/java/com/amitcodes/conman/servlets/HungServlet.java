@@ -1,4 +1,4 @@
-package com.amitcodes.conman;
+package com.amitcodes.conman.servlets;
 
 
 import org.slf4j.Logger;

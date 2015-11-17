@@ -1,5 +1,8 @@
 package com.amitcodes.conman;
 
+import com.amitcodes.conman.servlets.EchoServlet;
+import com.amitcodes.conman.servlets.HungServlet;
+import com.amitcodes.conman.servlets.MockServlet;
 import com.beust.jcommander.JCommander;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
