@@ -1,0 +1,10 @@
+<xml>
+    <mappings>
+        <mapping>
+            <uri>/documents/100</uri>
+            <httpMethod>GET</httpMethod>
+            <contentType>application/json</contentType>
+            <statusCode>200</statusCode>
+        </mapping>
+    </mappings>
+</xml>
