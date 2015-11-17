@@ -33,8 +33,25 @@ public class MockServlet extends HttpServlet
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         MockData data = mockDataMap.get(req.getMethod() + "_" + req.getRequestURI());
+        if(data == null) {
+            notFound(req, resp);
+            return;
+        }
+
         resp.setContentType(data.getContentType());
         resp.getOutputStream().write(data.getBodyBytes());
         resp.setStatus(data.getStatusCode());
+    }
+
+    private void notFound(HttpServletRequest req, HttpServletResponse resp) throws IOException
+    {
+        resp.setContentType("application/json");
+        resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        byte[] body =  String.format("{ \n" +
+                                             "\"status\": \"Conman mapping error\",\n" +
+                                             "\"message\": \"Mapping not found for method=%s, URI=%s\" \n" +
+                                             "}\n",
+                                     req.getMethod(), req.getRequestURI()).getBytes();
+        resp.getOutputStream().write(body);
     }
 }

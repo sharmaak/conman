@@ -4,8 +4,8 @@ port: 8081
 
 # URL mappings for the servlets
 mockServletUriMappings: 
-  - /employee/*
-  - /documents/*
+  - /tests/*
+  - /foo/*
 echoServletUriMappings: 
   - /echo/*
 hungServletUriMappings: 
@@ -13,13 +13,13 @@ hungServletUriMappings:
 
 # Data for mocking endpoints
 mockMappings: 
-    - uri : /documents/100
+    - uri : /tests/100
       httpMethod : GET
       body : hello world
       contentType : application/json
       statusCode : 200
 
-    - uri : /documents/200
+    - uri : /tests/200
       httpMethod : POST
       body : | 
         {
@@ -29,7 +29,7 @@ mockMappings:
       contentType : application/json
       statusCode : 200
 
-    - uri : /documents/300
+    - uri : /tests/300
       httpMethod : POST
       body : | 
         <xml>
@@ -42,6 +42,12 @@ mockMappings:
                 </mapping>
             </mappings>
         </xml>
-        !@#$%^&*())+{|[\]}
       contentType : application/json
       statusCode : 200
+
+    - uri: /tests/image
+      httpMethod: GET
+      body: |
+        STREAM_FILE:conf/ConManBody.jpg
+      contentType : image/jpg
+      statusCode : 201
