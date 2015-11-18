@@ -8,6 +8,10 @@ Conman is a tool to
 * dissect structure of HTTP requests
 * simulate hung or malfunctioning endpoints (to test the elusive socket-timeout)  
 
+The goal of conman is to quickly mock webservices (RESTful / SOAP) with minimum configuration. All it takes to have conman up and running is defining HTTP method, URL and response in a single YAML file (checkout the example [here] (https://github.com/sharmaak/conman/blob/master/conf/conman.yaml)). 
+
+Conman is the solution to your RESTful and SOAP webservice-mocking woes!
+
 ### What can Conman serve as response? 
 Conman can serve: 
 * Any test based response (JSON, XML, HTML, TXT, etc) 
