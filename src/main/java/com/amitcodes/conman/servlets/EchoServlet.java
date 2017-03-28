@@ -5,6 +5,7 @@ import com.amitcodes.conman.Launcher;
 import com.amitcodes.conman.pojos.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,27 +19,34 @@ import java.net.HttpURLConnection;
 public class EchoServlet extends HttpServlet
 {
     private static final Logger logger = LoggerFactory.getLogger(Launcher.class);
-    private ObjectMapper jsonMapper;
+//    private ObjectMapper jsonMapper;
+    private XmlMapper xmlMapper;
     
     @Override
     public void init() throws ServletException
     {
         super.init();
-        jsonMapper = new ObjectMapper();
-        jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        jsonMapper.enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
+//        jsonMapper = new ObjectMapper();
+//        jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
+//        jsonMapper.enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
+        xmlMapper = new XmlMapper();
+        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-        resp.setBufferSize(1000000);
+//        resp.setBufferSize(10*1024*1024);
 
         try {
             resp.setStatus(HttpURLConnection.HTTP_OK);
-            resp.setContentType("application/json");
+//            resp.setContentType("application/json");
+            resp.setContentType("application/xml");
+            
             Response r = Response.fromRequest(req);
-            jsonMapper.writeValue(resp.getOutputStream(), r);
+//            jsonMapper.writeValue(resp.getOutputStream(), r);
+//            xmlMapper.writeValue(resp.getOutputStream(), r);
+            resp.getOutputStream().print( xmlMapper.writeValueAsString( r ) );
         } catch (Exception e) {
             resp.reset();
             resp.setStatus(HttpURLConnection.HTTP_INTERNAL_ERROR);

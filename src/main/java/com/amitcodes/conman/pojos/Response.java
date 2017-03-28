@@ -18,7 +18,7 @@ public class Response
     private String data;
     private Map<String, Object> args = new LinkedHashMap<>();
 
-    private Response()
+    public Response()
     {
     }
 
@@ -101,7 +101,7 @@ public class Response
         String line;
         try ( BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream())) ) {
             while ((line = br.readLine()) != null){
-                b.append(line);
+                b.append(line).append( '\n' );
             }
         } catch (IOException iox) {
             throw new RuntimeException(iox);
