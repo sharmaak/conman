@@ -1,5 +1,7 @@
 package com.amitcodes.conman.pojos;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +17,8 @@ public class Response
     private String origin;
     private String method;
     private LinkedHashMap<String, String> headers = new LinkedHashMap<>();
-    private String data;
+    @JacksonXmlCData
+    private String body;
     private Map<String, Object> args = new LinkedHashMap<>();
 
     public Response()
@@ -29,7 +32,7 @@ public class Response
         response.setOrigin(req);
         response.setMethod(req);
         response.setArgs(req);
-        response.setData(req);
+        response.setBody( req );
         response.setUrl(req);
         return response;
     }
@@ -39,9 +42,9 @@ public class Response
         return url;
     }
 
-    public String getData()
+    public String getBody()
     {
-        return data;
+        return body;
     }
 
     public String getMethod()
@@ -94,10 +97,11 @@ public class Response
         url = req.getRequestURL().toString();
     }
 
-    private void setData(HttpServletRequest req)
+    private void setBody(HttpServletRequest req)
     {
         //---- Handle Body (POST, PATCH, PUT) ----
         StringBuilder b = new StringBuilder();
+        b.append( '\n' );
         String line;
         try ( BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream())) ) {
             while ((line = br.readLine()) != null){
@@ -106,7 +110,7 @@ public class Response
         } catch (IOException iox) {
             throw new RuntimeException(iox);
         }
-        data = b.toString();
+        body = b.toString();
     }
 
     private void setArgs(HttpServletRequest req)
