@@ -41,6 +41,11 @@ public class MockServlet extends HttpServlet
         resp.setContentType(data.getContentType());
         resp.getOutputStream().write(data.getBodyBytes());
         resp.setStatus(data.getStatusCode());
+        if(null != data.getResponseHeaders()) {
+            for (Map.Entry<String, String> header : data.getResponseHeaders().entrySet()) {
+                resp.setHeader(header.getKey(), header.getValue());
+            }
+        }
     }
 
     private void notFound(HttpServletRequest req, HttpServletResponse resp) throws IOException

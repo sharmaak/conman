@@ -16,8 +16,11 @@ mockMappings:
     - uri : /tests/100
       httpMethod : GET
       body : hello world
-      contentType : application/json
+      contentType : application/text
       statusCode : 200
+      responseHeaders:
+        "foo" : "bar"
+        "x" : "y"
 
     - uri : /tests/200
       httpMethod : POST
