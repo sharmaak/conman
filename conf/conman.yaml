@@ -11,6 +11,19 @@ echoServletUriMappings:
 hungServletUriMappings: 
   - /hung/*
 
+
+servlets:
+  - fqcn: "com.amitcodes.conman.servlets.MyServlet"
+    uriPath: "/my"
+    filters:
+    - fqcn : "realdoc.ghost.GhostFilter"
+      initParams:
+        "connectionPoolMode" : "DISABLE_TENANT_VALIDATION"
+        "altisourceStandardHeaderNames" : "aspsRequestId,X,y"
+
+
+
+
 # Data for mocking endpoints
 mockMappings: 
     - uri : /tests/100

@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class MockServlet extends HttpServlet
 {
-    private static final Logger logger = LoggerFactory.getLogger(Launcher.class);
+    private static final Logger logger = LoggerFactory.getLogger(MockServlet.class);
     private Map<String, MockData> mockDataMap;
 
     public MockServlet(ConmanConfig config)

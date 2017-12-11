@@ -2,6 +2,7 @@ package com.amitcodes.conman;
 
 import com.amitcodes.conman.config.ConmanConfig;
 import com.amitcodes.conman.config.SimpleYamlParser;
+import com.amitcodes.conman.pojos.Servlet;
 import com.amitcodes.conman.servlets.EchoServlet;
 import com.amitcodes.conman.servlets.HungServlet;
 import com.amitcodes.conman.servlets.MockServlet;
@@ -12,9 +13,13 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import realdoc.ghost.GhostFilter;
 
+import javax.servlet.Filter;
+import javax.servlet.http.HttpServlet;
 import java.net.URL;
 import java.security.ProtectionDomain;
+import java.util.Map;
 
 /**
  * Launcher class for conman
@@ -31,7 +36,6 @@ public class Launcher
         logger.info("Configuring jetty to run on port {}", config.getPort());
         server.setHandler(createWebAppContext(config));
         logger.info("WebAppContext creation successful.");
-
         server.start();
         server.join();
     }
@@ -39,7 +43,6 @@ public class Launcher
     private WebAppContext createWebAppContext(ConmanConfig config) {
 
         WebAppContext context = new WebAppContext();
-
         ProtectionDomain protectionDomain = Launcher.class.getProtectionDomain();
         URL location = protectionDomain.getCodeSource().getLocation();
 
@@ -69,6 +72,25 @@ public class Launcher
             logger.info("Servlet: HungServlet, adding pathSpec '{}'", pathSpec);
             context.addServlet(hungServlet, pathSpec);
         }
+        for (Servlet servlet: config.getServlets()) {
+            try {
+                Class<?> cls = Class.forName(servlet.getFqcn());
+                ServletHolder servletHolder = new ServletHolder((HttpServlet)cls.newInstance());
+                context.addServlet(servletHolder, servlet.getUriPath());
+                for(com.amitcodes.conman.pojos.Filter filter : servlet.getFilters()){
+                    Class<?> filterClass = Class.forName(filter.getFqcn());
+                    FilterHolder fh = new FilterHolder((Filter) filterClass.newInstance());
+                    fh.setInitParameters(filter.getInitParams());
+                    context.addFilter(fh, servlet.getUriPath(), null);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void addFilters(WebAppContext context, ConmanConfig config)
@@ -84,6 +106,10 @@ public class Launcher
         fh.setInitParameter("allowedOrigins", "*");
         // inject CORS filter
         context.addFilter(fh, corsPathSpec, null);
+    }
+
+    private void addDynamicFilter(WebAppContext context, ConmanConfig config){
+
     }
 
     public static void main(String[] args) throws Exception {
