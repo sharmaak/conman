@@ -1,6 +1,5 @@
 package com.amitcodes.conman.servlets;
 
-import com.amitcodes.conman.Launcher;
 import com.amitcodes.conman.config.ConmanConfig;
 import com.amitcodes.conman.pojos.MockData;
 import org.slf4j.Logger;
