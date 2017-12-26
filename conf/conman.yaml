@@ -18,8 +18,13 @@ servlets:
     filters:
     - fqcn : "realdoc.ghost.GhostFilter"
       initParams:
-        "connectionPoolMode" : "DISABLE_TENANT_VALIDATION"
+        "connectionPoolMode" : "mysql"
         "altisourceStandardHeaderNames" : "aspsRequestId,X,y"
+        "tenantDetailsEndpoint" : "http://rdcoruqa3-lbbackend1.altidev.net:9100/tenants/id/"
+        "connRequestTimeoutMillis" : 2000
+        "socketTimeoutMillis" : 10000
+        "maxConnTotal" : 100
+        "maxConnPerRoute" : 100
 
 
 

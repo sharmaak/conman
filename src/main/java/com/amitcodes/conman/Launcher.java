@@ -13,13 +13,11 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import realdoc.ghost.GhostFilter;
 
 import javax.servlet.Filter;
 import javax.servlet.http.HttpServlet;
 import java.net.URL;
 import java.security.ProtectionDomain;
-import java.util.Map;
 
 /**
  * Launcher class for conman

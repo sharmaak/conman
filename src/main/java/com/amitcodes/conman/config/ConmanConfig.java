@@ -3,6 +3,7 @@ package com.amitcodes.conman.config;
 import com.amitcodes.conman.pojos.MockData;
 import com.amitcodes.conman.pojos.Servlet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class ConmanConfig
     private List<String> echoServletUriMappings;
     private List<String> hungServletUriMappings;
     private List<MockData> mockMappings;
-    private List<Servlet> servlets;
+    private List<Servlet> servlets = new ArrayList<>();
 
     public ConmanConfig()
     {
