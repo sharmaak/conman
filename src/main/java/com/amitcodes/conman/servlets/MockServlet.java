@@ -1,6 +1,5 @@
 package com.amitcodes.conman.servlets;
 
-import com.amitcodes.conman.Launcher;
 import com.amitcodes.conman.config.ConmanConfig;
 import com.amitcodes.conman.pojos.MockData;
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 public class MockServlet extends HttpServlet
 {
-    private static final Logger logger = LoggerFactory.getLogger(Launcher.class);
+    private static final Logger logger = LoggerFactory.getLogger(MockServlet.class);
     private Map<String, MockData> mockDataMap;
 
     public MockServlet(ConmanConfig config)
@@ -41,6 +40,11 @@ public class MockServlet extends HttpServlet
         resp.setContentType(data.getContentType());
         resp.getOutputStream().write(data.getBodyBytes());
         resp.setStatus(data.getStatusCode());
+        if(null != data.getResponseHeaders()) {
+            for (Map.Entry<String, String> header : data.getResponseHeaders().entrySet()) {
+                resp.setHeader(header.getKey(), header.getValue());
+            }
+        }
     }
 
     private void notFound(HttpServletRequest req, HttpServletResponse resp) throws IOException

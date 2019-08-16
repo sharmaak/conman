@@ -11,13 +11,34 @@ echoServletUriMappings:
 hungServletUriMappings: 
   - /hung/*
 
+
+servlets:
+  - fqcn: "com.amitcodes.conman.servlets.MyServlet"
+    uriPath: "/my"
+    filters:
+    - fqcn : "realdoc.ghost.GhostFilter"
+      initParams:
+        "connectionPoolMode" : "mysql"
+        "altisourceStandardHeaderNames" : "aspsRequestId,X,y"
+        "tenantDetailsEndpoint" : "http://rdcoruqa3-lbbackend1.altidev.net:9100/tenants/id/"
+        "connRequestTimeoutMillis" : 2000
+        "socketTimeoutMillis" : 10000
+        "maxConnTotal" : 100
+        "maxConnPerRoute" : 100
+
+
+
+
 # Data for mocking endpoints
 mockMappings: 
     - uri : /tests/100
       httpMethod : GET
       body : hello world
-      contentType : application/json
+      contentType : application/text
       statusCode : 200
+      responseHeaders:
+        "foo" : "bar"
+        "x" : "y"
 
     - uri : /tests/200
       httpMethod : POST

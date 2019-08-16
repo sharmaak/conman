@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 
 public class EchoServlet extends HttpServlet
 {
-    private static final Logger logger = LoggerFactory.getLogger(Launcher.class);
+    private static final Logger logger = LoggerFactory.getLogger(EchoServlet.class);
     private ObjectMapper jsonMapper;
     
     @Override

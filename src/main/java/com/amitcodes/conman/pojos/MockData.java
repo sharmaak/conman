@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 
 public class MockData
 {
@@ -13,6 +15,9 @@ public class MockData
     private String contentType;
     private String httpMethod;
     private int statusCode;
+    private Map<String, String> responseHeaders;
+
+
 
     public MockData(){}
 
@@ -85,6 +90,14 @@ public class MockData
     public void setStatusCode(int statusCode)
     {
         this.statusCode = statusCode;
+    }
+
+    public Map<String, String> getResponseHeaders() {
+        return responseHeaders;
+    }
+
+    public void setResponseHeaders(Map<String, String> responseHeaders) {
+        this.responseHeaders = responseHeaders;
     }
 
     @Override

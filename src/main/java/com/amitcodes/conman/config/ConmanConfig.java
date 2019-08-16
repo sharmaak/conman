@@ -1,7 +1,9 @@
 package com.amitcodes.conman.config;
 
 import com.amitcodes.conman.pojos.MockData;
+import com.amitcodes.conman.pojos.Servlet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +18,7 @@ public class ConmanConfig
     private List<String> echoServletUriMappings;
     private List<String> hungServletUriMappings;
     private List<MockData> mockMappings;
+    private List<Servlet> servlets = new ArrayList<>();
 
     public ConmanConfig()
     {
@@ -71,15 +74,23 @@ public class ConmanConfig
         this.mockMappings = mockMappings;
     }
 
+    public List<Servlet> getServlets() {
+        return servlets;
+    }
+
+    public void setServlets(List<Servlet> servlets) {
+        this.servlets = servlets;
+    }
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "ConmanConfig{" +
                 "port=" + port +
                 ", mockServletUriMappings=" + mockServletUriMappings +
                 ", echoServletUriMappings=" + echoServletUriMappings +
                 ", hungServletUriMappings=" + hungServletUriMappings +
                 ", mockMappings=" + mockMappings +
+                ", servlets=" + servlets +
                 '}';
     }
 }
